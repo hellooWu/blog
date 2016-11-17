@@ -1,0 +1,75 @@
+
+body { margin:0px; padding:0px; background:#fff;}
+#p { margin:6px 0px; padding:4px 0px; }
+* { list-style:none; text-decoration:none; word-break: break-all; word-wrap: break-word; }
+body, th, td, input, select, textarea, button  
+{
+    font-size:12px;
+    font-family:Verdana, "Lucida Grande", Arial, Helvetica, sans-serif; 
+}
+
+#wrap{display:block; *display:inline-block; width:960px; margin:0 auto; text-align:left;}
+#wrap:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
+select { padding:2px; border:solid 1px #ccc; }
+/*====head====*/
+.head{display:block; *display:inline-block; height:97px; overflow:hidden;margin-bottom: 30px;}
+.head:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
+
+.head .search{ display:none; float:right; width:264px; height:24px; overflow:hidden; margin:20px 0 0 0; border:solid 1px #aad0f6; background:#fff;}
+.head .search input{vertical-align:middle;}
+.head .search .btn_search{float:right;}
+.head .search .input_search{float:left; width:186px; height:24px; padding:0 5px; border:none; background:#fff; line-height:24px;}
+
+.head .user_info{float:left; margin:6px 0 0 0;}
+.head .user_info * { margin:0px; padding:0px; }
+.head .user_info dt{float:left; width:77px; height:60px; padding:4px 0 0 7px;}
+.head .user_info dt img{width:48px; height:48px;}
+.head .user_info dd{float:left; width:500px; margin:0 0 0 -10px; padding:4px 0 0 0;}
+.head .user_info dd li .feed_link{font-family:Verdana, "Lucida Grande", Arial, Helvetica, sans-serif; color:#ccc;}
+.head .user_info .user_name{font:normal 14px/24px Arial, Helvetica, sans-serif;}
+.head .user_info .user_name a{margin:0 1em 0 0; color:#444; font-weight:bold;}
+.head .user_info .user_name span{color:#3a9cd3;}
+.head .user_info .feed_link{margin:0 0 0 -5px; color:#aaa; font:normal 12px/24px Arial, Helvetica, sans-serif;}
+.head .user_info .feed_link a{margin:0 6px;  font-size:12px;font-family: Helvetica, sans-serif; color:#11eea0;}
+
+.h_status { margin-bottom: 1px; padding: 5px; color: #999; }
+.h_status .active { font-weight: bold; }
+
+#type_post:after{border-bottom:1px solid #F5F5F5;margin-bottom: 20px;
+content: ".";
+display: block;
+height: 0;
+clear: both;
+}
+#sel_div{float:left;width:200px; }
+
+.tabs_header {float:left;width:150px; position:relative; height: 39px; overflow: hidden; margin-bottom: 1px;}
+.tabs_header ul.tabs { position: absolute; z-index: 10; width:100%; margin:0; padding:0; }
+.tabs_header ul.tabs li{display:inline; float: left; margin: 0 5px -1px 0; _margin: 0 0 -1px 0; padding:5px 0 0 0; font-size:14px;}
+.tabs_header ul.tabs li a span img{ vertical-align: middle; }
+.tabs_header ul.tabs li.active{padding:0;}
+.tabs_header ul.tabs li.write {float:left; height: 25px; margin:5px 0 0 20px; padding:0 0 0 25px; background: url(../images/add_button.gif) no-repeat 0 0; }
+.tabs_header ul.tabs li.write a.t_button { float:left; display:inline-block; height: 25px; margin:0; padding: 0 10px 0 0; background: url(../images/add_button.gif) no-repeat right top; color: #FFF; font-size: 12px; line-height:25px; text-decoration:none;}
+
+/*====list====*/
+#lstBox { width:100%; }
+#lstBox th { text-align:center; font-weight:bold; border-bottom:solid 1px #ccc; padding:6px 2px; }
+#lstBox td { text-align:center; padding:12px 2px;border-top:solid 1px #eee; }
+#lstBox .tdleft { text-align:left; padding-left:6px; }
+#lstBox .altitem td { background-color:#f9f9f9; }
+#lstBox .over td { background-color:#F9FAD1;}
+#lstBox td.enabled {}
+#lstBox td.draft { color:#999;}
+#lstBox td.deleted { color:#f00;}
+#lstBox td.verifying { color:#c60;}
+#lstBox .recon { text-align:left; color:#333; padding-left:6px; padding-bottom:12px; }
+
+#pagging{margin-top:20px;   font:14px arial;float: none;margin-right: 20px;}
+#pagging a{cursor: pointer;background: white;text-align: center;line-height: 34px;margin-right: 5px; color: #756F71;border-radius:10px;}
+#pagging span{display: inline;padding:5px 10px;border-radius:5px;}
+#pagging .pc{cursor: auto; width: 34px;height: 34px;border: 1px solid #e1e2e3; cursor: pointer;}
+#pagging .n{height: 34px;padding: 5px 10px; border: 1px solid #e1e2e3;}
+#pagging strong .pc{margin: 10px;border: 0;width: 36px;height: 36px;line-height: 36px; color: #333;text-align: center;}
+#pagging .disabled{display: none}
+
+

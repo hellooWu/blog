@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.wujialong.mapper.BlogMapper">
+
+<!-- 开启二级缓存 -->
+<cache/>
+
+<!-- 更新点击量 -->
+<update id="updateClickHitByID" parameterType="Integer">
+	update t_blog set clickHit=clickHit+1 where id=#{id}
+</update>
+
+
+<!-- 查询是否存在id 存在返回1 不存在返回0-->
+<select id="ifExistsID" parameterType="Integer" resultType="Integer">
+	select count(1) from t_blog where id=#{id}
+</select>
+
+<!-- 根据id删除博客 -->
+<delete id="deleteBlogByID" parameterType="Integer">
+	delete from t_blog where id=#{id}
+</delete>
+
+<!-- 获取最大id -->
+<select id="getMaxID" resultType="Integer">
+	select max(id) from t_blog
+</select>
+<!-- 查询博客by ID -->
+<select id="getBlogByID" resultType="com.wujialong.pojo.Blog" parameterType="Integer">
+	select * from t_blog where id=#{id}
+</select>
+
+<!--查询主页博客信息,每页5条,建立view查询展示的几列内容 -->
+<select id="getArticleInformation"  resultType="com.wujialong.pojo.Blog" parameterType="Integer">
+	select * from v_index_blog limit #{formerBlogID},5
+</select>
+
+<!-- 查询博客管理页面所需信息,每页多一些十二条吧  也建一个view,不分类-->
+<select id="getManagerInformation" resultType="com.wujialong.pojo.Blog"  parameterType="Integer">
+	select v_manager_blog.*,t_blogtype.type from v_manager_blog, t_blogtype where v_manager_blog.id=t_blogtype.blogID order by releaseDate desc limit #{formerBlogID},12
+</select>
+
+<!-- 查询按分类的博客管理界面信息 -->
+<select id="getManageInformationByType" parameterType="hashmap" resultType="com.wujialong.pojo.Blog">
+	select v_manager_blog.* ,t_blogtype.type  from v_manager_blog , t_blogtype where v_manager_blog.id=t_blogtype.blogID and type=#{type} order by releaseDate desc limit #{formerBlogID},12
+</select>
+
+<select id="getNumOfManageInformationByType" parameterType="String" resultType="int">
+	select count(*) from t_blog where type=#{type}
+</select>
+<!-- <resultMap type="com.wujialong.pojo.Blog" id="v_manage_blog_result_map">
+	<id column="id" property="id"/>
+	<result column="title" property="title"/>
+	<result column="releaseDate" property="releaseDate"/>
+	<result column="clickHit" property="clickHit"/>
+	<collection property="types" ofType="String">
+	</collection>
+	
+</resultMap> -->
+
+
+<!--查询博客总数-->
+<select id="getMaxRows"  resultType="int">
+	select count(*) from t_blog
+</select>
+
+<!-- 根据日期排序查询最新文章 title (8条)-->
+<select id="getLatestBlog" resultType="com.wujialong.pojo.Blog">
+	select id,title from v_index_blog ORDER BY releaseDate desc limit 8
+</select>
+
+
+<!-- 查询点击量最高的几篇文章 -->
+<select id="getTopClickedBlog" resultType="com.wujialong.pojo.Blog">
+	select id,title from t_blog order by clickHit desc limit 5
+</select>
+
+
+<!-- 博客信息存入数据库 -->
+<insert id="insertBlog" parameterType="com.wujialong.pojo.Blog" keyProperty="id" useGeneratedKeys="true" >
+	insert into t_blog(title,summary,releaseDate,content,type,author,clickHit) values(#{title},#{summary},#{releaseDate},#{content},#{type},'乌龟',0)
+</insert>
+
+<!-- 插入博客时同时更新类型表 -->
+<insert id="insertBlogType" parameterType="com.wujialong.pojo.Blog">
+	insert into t_blogType(type,blogID) values(#{type},#{id})
+</insert>
+
+<!-- 删除博客时同时删除类型表 -->
+<delete id="deleteBlogType" parameterType="int">
+	delete from t_blogtype where blogID=#{id}
+</delete>
+
+
+
+</mapper>
