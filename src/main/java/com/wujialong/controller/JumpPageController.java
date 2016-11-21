@@ -20,7 +20,7 @@ public class JumpPageController {
 	
 	@Autowired
 	private BlogService blogService;
-	
+
 	//实验
 	//controller中怎么互相跳转；return“forward：方法名”
 	//可以转移参数在return的方法名后加？pram=“value”并且可以自动赋参
