@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wujialong.pojo.Blog;
@@ -39,11 +40,11 @@ public class LoginController {
 	private BlogTypeService blogTypeService;
 	
 	
-	@RequestMapping(value="/login.html")
-	public String loginPage(){
-//		System.out.println("进来了login");
-		return "login";
-	}
+//	@RequestMapping(value="/login.html")
+//	public String loginPage(){
+////		System.out.println("进来了login");
+//		return "login";
+//	}
 	
 	
 //	暂时取消登录功能
@@ -64,6 +65,18 @@ public class LoginController {
 //			return new ModelAndView("login", "error", "用户名或密码错误");
 //		}
 //	}
+	@RequestMapping(value="/login.html")
+	public ModelAndView loginCheck(@RequestParam(value="error" ,required=false)String error) throws Exception{
+		//正常登陆返回登录界面,登录错误则返回error错误.
+		if(error==null){
+			return new ModelAndView("login");
+		}
+		else{
+			System.out.println("密码错误");
+			return new ModelAndView("login", "error", "用户名或密码错误");
+		}
+	}
+	
 	
 	//处理首页请求，包括页面跳转请求，若无page说明第一次请求page设为1，若为其他则封装pageBean返回
 //	@RequestMapping(value="/index.html")

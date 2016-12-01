@@ -43,7 +43,7 @@
 			<c:if test="${!empty error}">
             	<font color="red"><c:out value="${error}"/></font>
             </c:if> 
-            <form name="form1" method="post" action="index.html">
+            <form name="form1" method="post" action="/blog/login">
             <fieldset class="form">
                 <p>
                     <label class="loginlabel" for="user_name">

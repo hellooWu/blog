@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:security="http://www.springframework.org/schema/security"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+            http://www.springframework.org/schema/security   
+            http://www.springframework.org/schema/security/spring-security-4.0.xsd">  
+            
+<security:http pattern="/login/loading.gif" security="none"></security:http>
+<security:http pattern="/ueditor/jsp/controller.jsp*" security="none"></security:http>
+
+<security:http auto-config="true">
+	<security:intercept-url pattern="/login.html" access="hasRole('ROLE_ANONYMOUS')"/>
+	<security:intercept-url pattern="/manageBlog.html" access="hasRole('ROLE_ADMIN')" />  
+	<security:intercept-url pattern="/editor.html" access="hasRole('ROLE_ADMIN')" />  
+	
+<!--  		<security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/> -->
+<!--  login-page="/login.html"
+		username-parameter="user_name"
+		password-parameter="user_password"
+		authentication-failure-url="/login.html?error='true'"
+		always-use-default-target="true"-->	
+	<security:form-login   
+		login-page="/login.html"
+		username-parameter="user_name"
+		password-parameter="user_password"
+		default-target-url="/manageBlog.html"
+		/>   
+	<security:csrf disabled="true"/>  
+</security:http> 
+<security:authentication-manager>
+   <security:authentication-provider>
+  		<security:user-service>
+  	 		<security:user name="wu" password="941114" authorities="ROLE_ADMIN"/>
+  		 </security:user-service>
+   </security:authentication-provider>
+</security:authentication-manager> 
+</beans>
+     

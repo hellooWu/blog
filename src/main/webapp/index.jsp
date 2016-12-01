@@ -21,10 +21,10 @@
 <header>
   <div id="logo"><a href="/"></a></div>
   <nav class="topnav" id="topnav"><a href="index.html"><span>首页</span><span class="en">Protal</span></a>
-  <a href="album.html"><span>相册</span><span class="en">Album</span></a>
-  <a href="dairy.html"><span>日记</span><span class="en">Diary</span></a>
-  <a href="about.html"><span>关于我</span><span class="en">About</span></a>
-  <a href="book.html"><span>留言版</span><span class="en">Gustbook</span></a></nav>
+  <a ><span>相册</span><span class="en">Album</span></a>
+  <a ><span>日记</span><span class="en">Diary</span></a>
+  <a ><span>关于我</span><span class="en">About</span></a>
+  <a ><span>留言版</span><span class="en">Gustbook</span></a></nav>
 </header>
 <div class="banner">
   <section class="box">

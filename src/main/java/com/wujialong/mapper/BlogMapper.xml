@@ -87,7 +87,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 插入博客时同时更新类型表 -->
 <insert id="insertBlogType" parameterType="com.wujialong.pojo.Blog">
-	insert into t_blogType(type,blogID) values(#{type},#{id})
+	insert into t_blogtype(type,blogID) values(#{type},#{id})
 </insert>
 
 <!-- 删除博客时同时删除类型表 -->
