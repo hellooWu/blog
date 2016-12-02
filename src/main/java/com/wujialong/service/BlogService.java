@@ -1,8 +1,12 @@
 package com.wujialong.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -230,11 +234,24 @@ public class BlogService {
 		blog.setSummary(txtSummary);
 		blog.setContent(txtContent);
 		blog.setType(txtType);
-		blog.setReleaseDate(new Date());
+		blog.setReleaseDate(parseDate(new Date()));
 		blogMapper.insertBlog(blog);
 		blogMapper.insertBlogType(blog);
 		request.setAttribute("id", blog.getId());
 	}
-	
+	//为啥要转换一下?Linux的JDK时区有误为GMT标准时间,在这儿减去8小时插入数据库才是北京时间
+	private Date parseDate(Date date){
+		TimeZone timeZoneSH = TimeZone.getTimeZone("GMT-8");
+        SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT' yyyy",Locale.US);
+        inputFormat.setTimeZone(timeZoneSH);
+        Date dt = null;
+		try {
+			dt = inputFormat.parse(date.toString());
+		} catch (ParseException e) {
+			System.out.println("转换时间出错");
+			e.printStackTrace();
+		}
+		return dt;
+	}
 	
 }
