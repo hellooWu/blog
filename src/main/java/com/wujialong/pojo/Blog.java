@@ -1,7 +1,11 @@
 package com.wujialong.pojo;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 public class Blog implements Serializable{
@@ -40,7 +44,7 @@ public class Blog implements Serializable{
 	public Date getReleaseDate() {
 		return releaseDate;
 	}
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(Date releaseDate){
 		this.releaseDate = releaseDate;
 	}
 	public int getClickHit() {
